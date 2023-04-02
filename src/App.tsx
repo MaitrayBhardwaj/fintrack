@@ -9,7 +9,9 @@ function App() {
     return (
         <div>
             <Navbar />
-            <Transactions />
+            <div>
+                <Transactions />
+            </div>
         </div>
     )
 }

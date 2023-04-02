@@ -1,7 +1,7 @@
 interface TrxnProps {
     trxnName: string;
     trxnAmt: number;
-    trxnCategory: string;
+    trxnCategory: 'Food' | 'Shopping' | 'Bills' | 'Leisure' | 'Travel';
 }
 
 export default TrxnProps;
