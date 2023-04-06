@@ -1,12 +1,12 @@
 import TrxnProps from '../interfaces/TrxnProps';
 
-import { IoFastFoodOutline, IoGameControllerOutline } from 'react-icons/io5';
+import { IoFastFoodOutline, IoGameControllerOutline, IoTrashOutline } from 'react-icons/io5';
 import { RiShoppingBag3Line } from 'react-icons/ri';
 import { MdCreditCard } from 'react-icons/md';
 import { GiAirplaneDeparture } from 'react-icons/gi';
 
 const Trxn = (props: TrxnProps) => {
-    const { trxnAmt, trxnCategory, trxnName, trxnType } = props;
+    const { trxnAmt, trxnCategory, trxnName, trxnType, handleDelete } = props;
 
     const isExpense = trxnType === 'Expense';
 
@@ -27,16 +27,33 @@ const Trxn = (props: TrxnProps) => {
         }
     })()
 
+    const deleteTrxn = () => {
+        if(handleDelete) {
+            handleDelete(props.trxnId);
+        }
+    }
+
     const trxnAmtClass = isExpense ? 'text-rose-500' : 'text-green-500';
 
     return (
-        <div className="m-2 mt-0 border border-gray-200 p-2 flex items-center">
-            <div className='bg-gray-200 rounded-md mr-2 p-2'>
-                { categoryIcon }
+        <div 
+            className="mb-2 border rounded-md border-gray-200 py-2 px-3 flex items-center justify-between hover:bg-gray-100 transition-all"
+        >
+            <div className='flex items-center'>
+                <div className='bg-zinc-200 rounded-md mr-2 p-2'>
+                    { categoryIcon }
+                </div>
+                <div>
+                    <h3 className="font-bold">{ trxnName }</h3>
+                    <div className={trxnAmtClass}>{ isExpense ? '-' : '+' } ${ trxnAmt }</div>
+                </div>
             </div>
             <div>
-                <h3 className="font-bold">{ trxnName }</h3>
-                <div className={trxnAmtClass}>{ isExpense ? '-' : '+' } ${ trxnAmt }</div>
+                <button
+                    onClick={deleteTrxn} 
+                    className="bg-red-500 text-white rounded-md p-2">
+                    <IoTrashOutline />
+                </button>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import { useFormik } from "formik"
 import * as Yup from 'yup'
+import { nanoid } from 'nanoid'
 
 interface AddTrxnProps {
     onSubmit: Function;
@@ -29,9 +30,11 @@ const AddTrxn = (props: AddTrxnProps) => {
             trxnName: "",
             trxnAmt: 0,
             trxnCategory: "",
-            trxnType: ""
+            trxnType: "",
+            trxnId: ""
         },
         onSubmit: (values, { resetForm }) => {
+            values.trxnId = nanoid();
             props.onSubmit(values);
             resetForm();
         },
@@ -43,7 +46,7 @@ const AddTrxn = (props: AddTrxnProps) => {
             onClick={() => props.onClose()} 
             className="absolute bg-gray-900/90 w-full h-full flex items-center justify-center"
         >
-            <form onClick={(e) => e.stopPropagation()} className="relative bg-white rounded-md w-1/2 p-4" onSubmit={formik.handleSubmit}>
+            <form onClick={(e) => e.stopPropagation()} className="relative bg-white rounded-md w-3/4 lg:w-1/2 p-4" onSubmit={formik.handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">
                         Trxn. Name
