@@ -6,7 +6,7 @@ import { MdCreditCard } from 'react-icons/md';
 import { GiAirplaneDeparture } from 'react-icons/gi';
 
 const Trxn = (props: TrxnProps) => {
-    const { trxnAmt, trxnCategory, trxnName, trxnType, handleDelete } = props;
+    const { trxnAmt, trxnCategory, trxnName, trxnType, trxnDate, handleDelete } = props;
 
     const isExpense = trxnType === 'Expense';
 
@@ -44,7 +44,14 @@ const Trxn = (props: TrxnProps) => {
                     { categoryIcon }
                 </div>
                 <div>
-                    <h3 className="font-bold">{ trxnName }</h3>
+                    <div className="flex items-center">
+                        <h3 className="font-bold">
+                            { trxnName }
+                        </h3>
+                        <div className="text-gray-500 ml-1">
+                            • { trxnDate }
+                        </div>
+                    </div>
                     <div className={trxnAmtClass}>{ isExpense ? '-' : '+' } ${ trxnAmt }</div>
                 </div>
             </div>

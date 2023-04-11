@@ -21,7 +21,7 @@ const AddTrxnSchema = Yup.object().shape({
       .required('Required'),
     trxnType: Yup.string()
       .oneOf(['Income', 'Expense'], 'Invalid Type')
-      .required('Required')
+      .required('Required'),
 });
 
 const AddTrxn = (props: AddTrxnProps) => {
@@ -31,10 +31,12 @@ const AddTrxn = (props: AddTrxnProps) => {
             trxnAmt: 0,
             trxnCategory: "",
             trxnType: "",
-            trxnId: ""
+            trxnId: "",
+            trxnDate: ""
         },
         onSubmit: (values, { resetForm }) => {
             values.trxnId = nanoid();
+            values.trxnDate = new Date().toLocaleDateString();
             props.onSubmit(values);
             resetForm();
         },
