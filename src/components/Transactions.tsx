@@ -75,8 +75,8 @@ const Transactions = () => {
 
             <div className="p-3">
                 <div className="flex justify-between">
-                    <h2 className="text-2xl font-bold">Transactions</h2>
-                    <button onClick={handleAddTrxn} className="px-3 py-1 text-white bg-blue-500 rounded-md">Add Trxn</button>
+                    <h2 className="text-lg md:text-xl font-bold">Transactions</h2>
+                    <button onClick={handleAddTrxn} className="px-3 py-1 text-white bg-blue-500 text-sm rounded-md md:text-base">Add Trxn</button>
                 </div>
                 <div className='mt-4'>
                     {

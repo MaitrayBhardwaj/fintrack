@@ -39,7 +39,7 @@ const Trxn = (props: TrxnProps) => {
         <div 
             className="mb-2 border rounded-md border-gray-200 py-2 px-3 flex items-center justify-between hover:bg-gray-100 transition-all"
         >
-            <div className='flex items-center'>
+            <div className='flex items-center text-sm md:text-base'>
                 <div className='bg-zinc-200 rounded-md mr-2 p-2'>
                     { categoryIcon }
                 </div>
@@ -48,17 +48,20 @@ const Trxn = (props: TrxnProps) => {
                         <h3 className="font-bold">
                             { trxnName }
                         </h3>
+                        <div className=" ml-1 text-gray-500">
+                            •
+                        </div>
                         <div className="text-gray-500 ml-1">
-                            • { trxnDate }
+                            { trxnDate }
                         </div>
                     </div>
-                    <div className={trxnAmtClass}>{ isExpense ? '-' : '+' } ${ trxnAmt }</div>
+                    <div className={trxnAmtClass}>{ isExpense ? '-' : '+' } $ { Intl.NumberFormat().format(trxnAmt) }</div>
                 </div>
             </div>
             <div>
                 <button
                     onClick={deleteTrxn} 
-                    className="bg-red-500 text-white rounded-md p-2">
+                    className="bg-red-500 text-white text-sm md:text-base rounded-md p-2">
                     <IoTrashOutline />
                 </button>
             </div>

@@ -39,6 +39,7 @@ const AddTrxn = (props: AddTrxnProps) => {
             values.trxnDate = new Date().toLocaleDateString();
             props.onSubmit(values);
             resetForm();
+            props.onClose();
         },
         validationSchema: AddTrxnSchema
     })
