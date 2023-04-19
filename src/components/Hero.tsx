@@ -11,7 +11,7 @@ const Hero = () => {
                 <div className="flex flex-col md:flex-row justify-center my-3">
                     <div className="flex flex-col p-4 text-center items-center border-b md:border-r md:border-b-0">
                         <div className="text-2xl md:text-3xl my-2">
-                            { total > 0 ? '+' : '-' } $ { Intl.NumberFormat().format(Math.abs(total)) }
+                            { total >= 0 ? '+' : '-' } $ { Intl.NumberFormat().format(Math.abs(total)) }
                         </div>
                         <div className="text-gray-500">Total Balance</div>
                     </div>
